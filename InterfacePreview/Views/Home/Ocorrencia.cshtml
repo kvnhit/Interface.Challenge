@@ -1,0 +1,188 @@
+﻿
+@{
+    ViewData["Title"] = "Ocorrencia";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <script>
+        $(document).ready(function () {
+            // Lógica para abrir modal ao clicar em detalhes-btn (já está implícito no exemplo acima)$('.detalhes-btn').click(function () {
+            // Obtém o ID do modal a partir do atributo data-target
+            var targetModal = $(this).attr('data-target');
+            // Abre o modal correspondente
+            $(targetModal).modal('show');
+        });
+            // Lógica para limpar filtros
+            $('#limparFiltroOcorrencia').click(function () {
+                $('#textoFiltroOcorrencia').val('');
+            });
+
+            $('#limparFiltroTipo').click(function () {
+                $('#textoFiltroTipo').val('');
+            });
+
+            $('#limparFiltroOcorreuEm').click(function () {
+                $('#filtroOcorreuEm').val('');
+            });
+
+            // Adicione aqui a lógica para aplicar os filtros usando JavaScript/jQuery se necessário
+
+        });
+    </script>
+</head>
+<body>
+    <script>
+        $(document).ready(function () {
+            // Lógica para abrir modal ao clicar em detalhes-btn (já está implícito no exemplo acima)
+            $('.detalhes-btn').click(function () {
+            // Obtém o ID do modal a partir do atributo data-target
+            var targetModal = $(this).attr('data-target');
+            // Abre o modal correspondente
+            $(targetModal).modal('show');
+        });
+            // Lógica para limpar filtros
+            $('#limparFiltroOcorrencia').click(function () {
+                $('#textoFiltroOcorrencia').val('');
+            });
+
+            $('#limparFiltroTipo').click(function () {
+                $('#textoFiltroTipo').val('');
+            });
+
+            $('#limparFiltroOcorreuEm').click(function () {
+                $('#filtroOcorreuEm').val('');
+            });
+
+            // Adicione aqui a lógica para aplicar os filtros usando JavaScript/jQuery se necessário
+
+        });
+    </script>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Ocorrência</th>
+                <th>Tipo de Ocorrência</th>
+                <th>Ocorreu em</th>
+                <th>Transportador</th>
+                <th>Transportador CNPJ/CPF</th>
+                <th>Solução (Data)</th>
+                <th>Já solucionada</th>
+                <th>Dias em aberto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Exemplo de linha na tabela -->
+            <tr>
+                <td><button type="button" class="btn btn-link detalhes-btn" data-toggle="modal" data-target="#detalhesModal">1</button></td>
+                <td>ENTREGA REALIZADA COM SUCESSO</td>
+                <td>01/07/2024</td>
+                <td>TOMASI</td>
+                <td>03279710000271</td>
+                <td>02/07/2024</td>
+                <td><i class="fas fa-check-circle text-success"></i></td>
+                <td>1</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="modal fade" id="detalhesModal" tabindex="-1" role="dialog" aria-labelledby="detalhesModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detalhesModalLabel">Detalhes da Ocorrência</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Conteúdo dos detalhes da ocorrência (hardcoded) -->
+                    <p><strong>Ocorrência:</strong> 1</p>
+                    <p><strong>Tipo de Ocorrência:</strong> ENTREGA REALIZADA COM SUCESSO</p>
+                    <p><strong>Ocorreu em:</strong> 01/07/2024</p>
+                    <p><strong>Transportador:</strong> TOMASI</p>
+                    <p><strong>Transportador CNPJ/CPF:</strong> 03279710000271</p>
+                    <p><strong>Solução:</strong> 02/07/2024</p>
+                    <p><strong>Já solucionada:</strong> <i class="fas fa-check-circle text-success"></i></p>
+                    <p><strong>Dias em aberto:</strong> 1</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="mt-4">
+        <h5>Filtros:</h5>
+        <div class="form-inline">
+            <div class="form-group mr-2">
+                <label for="filtroOcorrencia">Ocorrência:</label>
+                <select class="form-control" id="filtroOcorrencia">
+                    <option value="=">=</option>
+                    <option value="!=">!=</option>
+                </select>
+                <input type="text" class="form-control ml-2" id="textoFiltroOcorrencia">
+                <button type="button" class="btn btn-sm btn-danger ml-2" id="limparFiltroOcorrencia">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+            <div class="form-group mr-2">
+                <label for="filtroTipo">Tipo de Ocorrência:</label>
+                <select class="form-control" id="filtroTipo">
+                    <option value="=">=</option>
+                    <option value="!=">!=</option>
+                </select>
+                <input type="text" class="form-control ml-2" id="textoFiltroTipo">
+                <button type="button" class="btn btn-sm btn-danger ml-2" id="limparFiltroTipo">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+            <div class="form-group mr-2">
+                <label for="filtroOcorreuEm">Ocorreu em:</label>
+                <input type="date" class="form-control ml-2" id="filtroOcorreuEm">
+                <button type="button" class="btn btn-sm btn-danger ml-2" id="limparFiltroOcorreuEm">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        $(document).ready(function () {
+            // Lógica para abrir modal ao clicar em detalhes-btn (já está implícito no exemplo acima)
+            $('.detalhes-btn').click(function () {
+                // Obtém o ID do modal a partir do atributo data-target
+                var targetModal = $(this).attr('data-target');
+                // Abre o modal correspondente
+                $(targetModal).modal('show');
+            });
+            // Lógica para limpar filtros
+            $('#limparFiltroOcorrencia').click(function () {
+                $('#textoFiltroOcorrencia').val('');
+            });
+
+            $('#limparFiltroTipo').click(function () {
+                $('#textoFiltroTipo').val('');
+            });
+
+            $('#limparFiltroOcorreuEm').click(function () {
+                $('#filtroOcorreuEm').val('');
+            });
+
+            // Adicione aqui a lógica para aplicar os filtros usando JavaScript/jQuery se necessário
+
+        });
+    </script>
+</body>
+</html>
+
+
